@@ -63,21 +63,21 @@ let visa = Card(name: "Visa",
                 number: "**** **** **** **11",
                 account: "6236782353 EUR",
                 balance: 13356.00,
-                cardHolder: "DIMITAR STEFANOVSKI")
+                cardHolder: "MARIJA STOJANOVSKA")
 
 let masterCard = Card(name: "MasterCard",
                       cardImage: "mastercard1",
                       number: "**** **** **** **22",
                       account: "885654454115 MKD",
                       balance: 23662.00,
-                      cardHolder: "DAVID STOJANOVSKI")
+                      cardHolder: "DAVID TRAJKOVSKI")
 
 let masterCardPay = Card(name: "MasterCard Debit paypass",
                          cardImage: "mastercard2",
                          number: "**** **** **** **41",
                          account: "34478765446 EUR",
                          balance: 69458.00,
-                         cardHolder: "MARIJA ANDOVSKA")
+                         cardHolder: "DIMITAR STEFANOVSKI")
 
 let maestro = Card(name: "Maestro",
                    cardImage: "maestro",
