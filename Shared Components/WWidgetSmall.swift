@@ -90,7 +90,7 @@ struct WWidgetSmall: View {
             
         }
         .padding(16)
-        
+        .widgetURL(URL(string: transaction.stringId)!)
     }
 }
 

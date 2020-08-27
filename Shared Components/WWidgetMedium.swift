@@ -38,68 +38,70 @@ struct WWidgetMedium: View {
                         .font(Fonts.headingMedium)
                         .foregroundColor(Colors.Text.secondary1)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .leading)                
                 
                 Spacer()
                 
                 ForEach(self.transactions, id: \.self) { transaction in
-                    VStack {
-                        HStack {
-                            
-                            //Line
-                            RoundedRectangle(cornerRadius: 1)
-                                .fill(Colors.Transaction.positive)
-                                .frame(width: 2, height: 34)
-                            
-                            VStack(alignment: .leading) {
-                                HStack {
+                    Link(destination: URL(string: transaction.stringId)!) {
+                        VStack {
+                            HStack {
+                                
+                                //Line
+                                RoundedRectangle(cornerRadius: 1)
+                                    .fill(Colors.Transaction.positive)
+                                    .frame(width: 2, height: 34)
+                                
+                                VStack(alignment: .leading) {
+                                    HStack {
+                                        
+                                        //Card logo
+                                        Image(uiImage: UIImage(named: transaction.card.cardImage)!)
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 28, height: 18)
+                                            .clipped()
+                                        
+                                        //Card name
+                                        Text(transaction.card.name)
+                                            .font(Fonts.headingRegular)
+                                    }
                                     
-                                    //Card logo
-                                    Image(uiImage: UIImage(named: transaction.card.cardImage)!)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 28, height: 18)
-                                        .clipped()
-                                    
-                                    //Card name
-                                    Text(transaction.card.name)
+                                    //Card number
+                                    Text(transaction.card.number)
                                         .font(Fonts.headingRegular)
+                                        .foregroundColor(Colors.Text.secondary2)
                                 }
+                                .frame(width: 120.0, alignment: .leading)
                                 
-                                //Card number
-                                Text(transaction.card.number)
-                                    .font(Fonts.headingRegular)
-                                    .foregroundColor(Colors.Text.secondary2)
-                            }
-                            .frame(width: 120.0, alignment: .leading)
-                            
-                            Spacer()
-                                .frame(width: 10.0)
-                            
-                            // Transaction amount
-                            ZStack {
+                                Spacer()
+                                    .frame(width: 10.0)
                                 
-                                //Transaction Background
-                                RoundedRectangle(cornerRadius: 3)
-                                    .fill(transaction.amount > 0 ? Colors.Transaction.positive : Colors.Transaction.negative)
-                                    .frame(width: 68, height: 18)
-                                    .shadow(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.25)), radius: 8, x: 2, y: 2)
-                                
-                                //Transaction amount €
-                                Text(transaction.stringAmount)
-                                    .font(Fonts.subtitleSemiBold)
-                                    .foregroundColor(Colors.Transaction.text)
-                                    .multilineTextAlignment(.center)
-                            }
-                            .frame(alignment: .trailing)
-                            
-                            // Timestamp
-                            Text(transaction.timestamp)
-                                .font(Fonts.captionLight)
-                                .foregroundColor(Colors.Text.secondary2)
+                                // Transaction amount
+                                ZStack {
+                                    
+                                    //Transaction Background
+                                    RoundedRectangle(cornerRadius: 3)
+                                        .fill(transaction.amount > 0 ? Colors.Transaction.positive : Colors.Transaction.negative)
+                                        .frame(width: 68, height: 18)
+                                        .shadow(color: Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.25)), radius: 8, x: 2, y: 2)
+                                    
+                                    //Transaction amount €
+                                    Text(transaction.stringAmount)
+                                        .font(Fonts.subtitleSemiBold)
+                                        .foregroundColor(Colors.Transaction.text)
+                                        .multilineTextAlignment(.center)
+                                }
                                 .frame(alignment: .trailing)
+                                
+                                // Timestamp
+                                Text(transaction.timestamp)
+                                    .font(Fonts.captionLight)
+                                    .foregroundColor(Colors.Text.secondary2)
+                                    .frame(alignment: .trailing)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     // Separator
                     Rectangle()

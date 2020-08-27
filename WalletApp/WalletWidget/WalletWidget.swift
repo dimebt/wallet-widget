@@ -9,37 +9,33 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
-    public typealias Entry = SimpleEntry
+    public typealias Entry = WalletWidgetEntry
     
-    public func snapshot(with context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date())
+    public func snapshot(with context: Context, completion: @escaping (WalletWidgetEntry) -> ()) {
+        let entry = WalletWidgetEntry(date: Date())
         completion(entry)
     }
     
     public func timeline(with context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
         
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+        // Generate a timeline consisting of one entry with reload policy after 1 min.
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate)
-            entries.append(entry)
-        }
-        
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let nextUpdateDate = Calendar.current.date(byAdding: .minute,
+                                                   value: 1,
+                                                   to: currentDate)!
+        let entry = WalletWidgetEntry(date: currentDate)
+        let timeline = Timeline(entries: [entry], policy: .after(nextUpdateDate))
         completion(timeline)
     }
-}
-
-struct SimpleEntry: TimelineEntry {
-    public let date: Date
-}
-
-struct PlaceholderView : View {
-    var body: some View {
-        Text("Loading..")
+    
+    public func placeholder(in context: Context) -> Entry {
+        let entry = WalletWidgetEntry(date: Date())
+        return entry
     }
+}
+
+struct WalletWidgetEntry: TimelineEntry {
+    public let date: Date
 }
 
 struct WalletWidgetEntryView : View {
@@ -68,11 +64,12 @@ struct WalletWidget: Widget {
     private let kind: String = "WalletWidget"
     
     public var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider(), placeholder: PlaceholderView()) { entry in
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
             WalletWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Wallet Widget")
+        .description("Description for the Wallet app widget.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }
 

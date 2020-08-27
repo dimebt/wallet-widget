@@ -34,6 +34,9 @@
 		46567BFB24D816DC000BBCF3 /* WWidgetSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46567BF924D816DC000BBCF3 /* WWidgetSmall.swift */; };
 		46567BFC24D816DC000BBCF3 /* WWidgetSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46567BF924D816DC000BBCF3 /* WWidgetSmall.swift */; };
 		46567C0324D82416000BBCF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46567BA524D72805000BBCF3 /* Assets.xcassets */; };
+		4657BB7C24F7265800B74CFD /* WWidgetPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657BB7B24F7265800B74CFD /* WWidgetPreview.swift */; };
+		4657BB7D24F7265800B74CFD /* WWidgetPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657BB7B24F7265800B74CFD /* WWidgetPreview.swift */; };
+		4657BB7E24F7265800B74CFD /* WWidgetPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4657BB7B24F7265800B74CFD /* WWidgetPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,8 @@
 		46567BEA24D72B0B000BBCF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46567BF124D814D6000BBCF3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		46567BF924D816DC000BBCF3 /* WWidgetSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWidgetSmall.swift; sourceTree = "<group>"; };
+		4657BB7B24F7265800B74CFD /* WWidgetPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWidgetPreview.swift; sourceTree = "<group>"; };
+		4657BB8D24F7475200B74CFD /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = Library/Frameworks/IntentsUI.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +137,7 @@
 				46567BF924D816DC000BBCF3 /* WWidgetSmall.swift */,
 				464EFEBB24D861A2003A1708 /* WWidgetMedium.swift */,
 				464EFEBF24D861B3003A1708 /* WWidgetLarge.swift */,
+				4657BB7B24F7265800B74CFD /* WWidgetPreview.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -168,6 +174,7 @@
 			children = (
 				46567BCA24D729A5000BBCF3 /* WidgetKit.framework */,
 				46567BCC24D729A5000BBCF3 /* SwiftUI.framework */,
+				4657BB8D24F7475200B74CFD /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -315,6 +322,7 @@
 				464EFEBC24D861A2003A1708 /* WWidgetMedium.swift in Sources */,
 				46567BB824D72805000BBCF3 /* ContentView.swift in Sources */,
 				46567BB624D72805000BBCF3 /* WalletAppApp.swift in Sources */,
+				4657BB7C24F7265800B74CFD /* WWidgetPreview.swift in Sources */,
 				4602172524D8C2D1005571D0 /* MockData.swift in Sources */,
 				46567BF224D814D6000BBCF3 /* Constants.swift in Sources */,
 				464EFEC024D861B3003A1708 /* WWidgetLarge.swift in Sources */,
@@ -329,6 +337,7 @@
 				464EFEBD24D861A2003A1708 /* WWidgetMedium.swift in Sources */,
 				46567BB924D72805000BBCF3 /* ContentView.swift in Sources */,
 				46567BB724D72805000BBCF3 /* WalletAppApp.swift in Sources */,
+				4657BB7D24F7265800B74CFD /* WWidgetPreview.swift in Sources */,
 				4602172624D8C2D1005571D0 /* MockData.swift in Sources */,
 				46567BF324D814D6000BBCF3 /* Constants.swift in Sources */,
 				464EFEC124D861B3003A1708 /* WWidgetLarge.swift in Sources */,
@@ -343,6 +352,7 @@
 				46567BE724D72B09000BBCF3 /* WalletWidget.swift in Sources */,
 				464EFEC224D861B3003A1708 /* WWidgetLarge.swift in Sources */,
 				46567BF424D814D6000BBCF3 /* Constants.swift in Sources */,
+				4657BB7E24F7265800B74CFD /* WWidgetPreview.swift in Sources */,
 				4602172724D8C2D1005571D0 /* MockData.swift in Sources */,
 				46567BFC24D816DC000BBCF3 /* WWidgetSmall.swift in Sources */,
 			);

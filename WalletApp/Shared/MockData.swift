@@ -22,6 +22,7 @@ struct Card {
 
 struct Transaction: Hashable, Identifiable {
     var id: UUID = UUID()
+    var stringId: String
     let card: Card
     let amount: Double
     let currency: String
@@ -38,6 +39,7 @@ struct Transaction: Hashable, Identifiable {
     var stringAmount: String {
         return Helper.formatAmount(value: amount)
     }
+
 }
 
 struct Helper {
@@ -55,6 +57,15 @@ struct Helper {
     
         return String(amountFormatter.string(from: NSNumber(value: value))!)
     }
+    
+    static func getTransaction(from stringId: String) -> Transaction {
+        for transaction in mockTransactions {
+            if transaction.stringId == stringId {
+                return transaction
+            }
+        }
+        return zeroTransaction
+    }
 }
 
 
@@ -63,21 +74,21 @@ let visa = Card(name: "Visa",
                 number: "**** **** **** **11",
                 account: "6236782353 EUR",
                 balance: 13356.00,
-                cardHolder: "DIMITAR STEFANOVSKI")
+                cardHolder: "MARIJA STOJANOVSKA")
 
 let masterCard = Card(name: "MasterCard",
                       cardImage: "mastercard1",
                       number: "**** **** **** **22",
                       account: "885654454115 MKD",
                       balance: 23662.00,
-                      cardHolder: "DAVID STOJANOVSKI")
+                      cardHolder: "DAVID TRAJKOVSKI")
 
 let masterCardPay = Card(name: "MasterCard Debit paypass",
                          cardImage: "mastercard2",
                          number: "**** **** **** **41",
                          account: "34478765446 EUR",
                          balance: 69458.00,
-                         cardHolder: "MARIJA ANDOVSKA")
+                         cardHolder: "DIMITAR STEFANOVSKI")
 
 let maestro = Card(name: "Maestro",
                    cardImage: "maestro",
@@ -88,20 +99,29 @@ let maestro = Card(name: "Maestro",
 
 
 
-let trx1 = Transaction(card: visa,
+let trx1 = Transaction(stringId: "0",
+                       card: visa,
                        amount: 5.00,
                        currency: "EUR",
                        timestamp: "Today at 10:13")
 
-let trx2 = Transaction(card: maestro,
+let trx2 = Transaction(stringId: "1",
+                       card: maestro,
                        amount: -67.00,
                        currency: "EUR",
                        timestamp: "Today at 23:54")
 
-let trx3 = Transaction(card: masterCard,
+let trx3 = Transaction(stringId: "2",
+                       card: masterCard,
                        amount: 230.00,
                        currency: "EUR",
                        timestamp: "Yesterday at 13:04")
+
+let zeroTransaction = Transaction(stringId: "3",
+                                  card: masterCard,
+                                  amount: 0.00,
+                                  currency: "EUR",
+                                  timestamp: "Yesterday at 00:00")
 
 let mockTransactions = [trx1, trx2, trx3]
 let mockLast2Transactions = [trx2, trx3]
